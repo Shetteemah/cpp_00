@@ -1,15 +1,18 @@
-#include "phonebook.hpp"
-#include <iostream>
-#include <string>
+# include "./phonebook.hpp"
+# include "./contact.hpp"
+# include <iostream>
+# include <iomanip>
+# include <cmath>
+# include <limits>
 
 int main()
 {
     PhoneBook phoneBook;
 
     std::string command;
+    std::cout << "Please enter a command: ADD, SEARCH or EXIT" << std::endl;
     while (true)
     {
-        std::cout << "Please enter a command: ADD, SEARCH or EXIT" << std::endl;
         std::getline(std::cin, command);
 
         if (command == "ADD")
@@ -36,12 +39,14 @@ int main()
             std::cout << "Enter darkest secret: ";
             std::getline(std::cin, field);
             contact.setDarkestSecret(field);
-
             phoneBook.addContact(contact);
-        }
+            std::cout << "Please enter a command: ADD, SEARCH or EXIT" << std::endl;
+}
         else if (command == "SEARCH")
         {
             phoneBook.searchContacts();
+            std::cout << "Please enter a command: ADD, SEARCH or EXIT" << std::endl;
+
         }
         else if (command == "EXIT")
         {
@@ -49,6 +54,5 @@ int main()
             break;
         }
     }
-
     return 0;
 }

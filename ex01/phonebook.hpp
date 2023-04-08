@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include "contact.hpp"
+#include "./contact.hpp"
 
 class PhoneBook {
   private:
@@ -17,11 +17,12 @@ class PhoneBook {
   {
     if (str.length() > width)
     {
-      return str.substr(0, width - 1) + ".";
+      return str.substr(0, width - 3) + "...";
     }
     return str;
   }
-    void addContact(const Contact& contact);
+    void addContact(const Contact &contact);
+    void replaceOldestContact(const Contact &contact);
     void searchContacts() const;
 };
 

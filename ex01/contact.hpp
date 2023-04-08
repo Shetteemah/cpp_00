@@ -1,7 +1,11 @@
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
-#include <string>
+# include <iostream>
+# include <iomanip>
+# include <cmath>
+# include <limits>
+# include <string>
 
 class Contact {
   private:
@@ -20,15 +24,6 @@ class Contact {
     void setNickname(const std::string& nickname);
     void setPhoneNumber(const std::string& phoneNumber);
     void setDarkestSecret(const std::string& darkestSecret);
-
-// void Contact::displayContact() const
-// {
-//     std::cout << "First name: " << firstName << std::endl;
-//     std::cout << "Last name: " << lastName << std::endl;
-//     std::cout << "Nickname: " << nickname << std::endl;
-//     std::cout << "Phone number: " << phoneNumber << std::endl;
-//     std::cout << "Darkest secret: " << darkestSecret << std::endl;
-// }
 
     std::string getFirstName() const;
     std::string getLastName() const;
