@@ -1,9 +1,5 @@
 # include "./phonebook.hpp"
 # include "./contact.hpp"
-# include <iostream>
-# include <iomanip>
-# include <cmath>
-# include <limits>
 
 int main()
 {

@@ -1,25 +1,36 @@
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME		= phonebook
+CC			= c++
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp phonebook.cpp contact.cpp
-OBJS = $(SRCS:.cpp=.o)
+SRCS		= main.cpp phonebook.cpp contact.cpp
+RM			= rm -rf
+SRC_PATH	= src/
+OBJ_PATH	= obj/
+INC_DIR		= include/
 
-PHONEBOOK = phonebook
+SRC			= $(addprefix $(SRC_PATH), $(SRCS))
+OBJ			= $(addprefix $(OBJ_PATH), $(OBJS))
 
-.PHONY: all clean fclean re
+OBJS		= $(SRCS:.cpp=.o)
 
-all: $(PHONEBOOK)
+all:		$(NAME)
 
-$(PHONEBOOK): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(PHONEBOOK)
+$(NAME):	$(OBJ)
+			@echo "Compiling $(NAME)...$(RESET)"
+			@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+			@echo "Done! your executable is named $(NAME)$(RESET)"
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_PATH)%.o:$(SRC_PATH)%.cpp
+			@mkdir -p $(OBJ_PATH)
+			@$(CC) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
+
 
 clean:
-	$(RM) $(OBJS)
+			$(RM) $(OBJ_PATH)
 
-fclean: clean
-	$(RM) $(PHONEBOOK)
+fclean: 	clean
+			$(RM) $(NAME)
 
-re: fclean all
+re: 		fclean all
+
+.PHONY: 	all clean fclean re

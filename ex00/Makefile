@@ -1,13 +1,23 @@
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CC			= c++
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-all: megaphone
+all:		megaphone
 
-megaphone: main.o
-	$(CC) $(CFLAGS) main.o -o megaphone
+main.o:		megaphone.cpp
+			$(CC) $(CFLAGS) -c megaphone.cpp
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) -c main.cpp
+megaphone:	megaphone.o
+			@echo "Turning on megaphone...$(RESET)"
+			@$(CC) $(CFLAGS) megaphone.o -o megaphone
+			@echo "Done! your megaphone is ready.$(RESET)"
+
 
 clean:
-	rm -f megaphone *.o
+			rm -f *.o
+
+fclean:		clean
+			rm -f megaphone *.o
+
+re:			fclean megaphone
+
+.PHONY:		all clean fclean re
